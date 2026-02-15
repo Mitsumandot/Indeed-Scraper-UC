@@ -48,6 +48,13 @@ Proxies can be configured within the scraper.
 
 The proxy_test function ensures that requests are properly routed through the configured proxy.
 
+## User-agent
+
+A user-agent rotator is implemented to reduce the likelihood of bot detection.
+It randomly changes the User-Agent header for each session, making the traffic appear as if it originates from different browsers or devices.
+
+By rotating User-Agent strings, the scraper avoids repeatedly sending requests with the same browser signature, which helps lower the risk of being flagged by anti-bot systems.
+
 ## Headless-mode
 
 This project does not use headless mode, and so the browser window is visibly opened during the execution, it is impossible to use during the sign in phase, but you can add it afterward, when the user data are saved, but not having the headless mode on is generally better as it makes it harder for the anti-bot detection flag to trigger.
