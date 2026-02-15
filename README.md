@@ -13,9 +13,41 @@ Before running the project, make sure you have:
  - Google Chrome installed.
  - ChromeDriver version 144 (must match your Chrome version for Selenium compatibility)
 # Functionalities
-there are two main functions in the Request Class that are used to scrap, the first one without description, way faster than the second version with description, because selenium needs to simulate clicking on every job in the page to have their description displayed, and there is a random delay (1 to 6 seconds) between each click used to avoid triggering the robot detection and the "verify that you are not a robot" page.
-there is a function Login that is triggered the first time you run the algorithm, its purpose is to manually sign in, after that, the user data is stored in the auth folder, and the next times you run the algorithm, you wont have to login again.
-You can also incorporate proxy usage in your scraping to avoid having your IP adress black listed because of too much requests. There is a test_proxy function used to make sure that your requests are send through your proxy. 
+
+The Request class provides two main scraping methods:
+
+## Fast Mode (Without Description)
+
+This method extracts job listings without retrieving their full descriptions.
+It is significantly faster because it does not simulate interaction with each individual job post.
+This mode is recommended when collecting large amounts of basic job data such as title, company, location, and date.
+
+## Full Mode (With Description)
+
+This method retrieves complete job descriptions.
+To access the description content, Selenium simulates clicking on each job listing displayed on the page.
+
+To reduce the risk of triggering bot detection mechanisms (such as the "Verify you are not a robot" page), a randomized delay of 1 to 6 seconds is introduced between each click.
+This makes the scraping behavior more human-like, but increases overall execution time.
+
+## Authentication Handling
+
+The Login() function is automatically triggered the first time the program is executed.
+It allows the user to manually sign in to their Indeed account.
+
+Once authenticated:
+
+- Session data is stored in the auth/ directory.
+- Future executions reuse the stored session.
+- The user does not need to log in again unless the session expires.
+
+## Proxy Support
+
+Proxy usage can be integrated to reduce the risk of IP blacklisting due to a high number of requests.
+
+Proxies can be configured within the scraper.
+
+The proxy_test function ensures that requests are properly routed through the configured proxy.
 
 # Disclaimer
 This project is for educational and personal use only. Users are responsible for complying with Indeed's Terms of Service. The author assumes no liability for misuse of this tool.
