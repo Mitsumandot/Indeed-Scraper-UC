@@ -20,7 +20,6 @@ The Request class provides two main scraping methods:
 
 This method extracts job listings without retrieving their full descriptions.
 It is significantly faster because it does not simulate interaction with each individual job post.
-This mode is recommended when collecting large amounts of basic job data such as title, company, location, and date.
 
 ## Full Mode (With Description)
 
@@ -48,6 +47,10 @@ Proxy usage can be integrated to reduce the risk of IP blacklisting due to a hig
 Proxies can be configured within the scraper.
 
 The proxy_test function ensures that requests are properly routed through the configured proxy.
+
+## Headless-mode
+
+This project does not use headless mode, and so the browser window is visibly opened during the execution, it is impossible to use during the sign in phase, but you can add it afterward, when the user data are saved, but not having the headless mode on is generally better as it makes it harder for the anti-bot detection flag to trigger.
 
 # Disclaimer
 This project is for educational and personal use only. Users are responsible for complying with Indeed's Terms of Service. The author assumes no liability for misuse of this tool.
